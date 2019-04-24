@@ -1,10 +1,10 @@
 FROM maven:3.5-jdk-8-alpine AS build
 LABEL Author="chenchuxin <idesireccx@gmail.com>"
-ARG version=v1.3.0
+ARG version=1.3.0
 ARG package_name=apollo-${version}.tar.gz
 COPY build.sh /scripts/ 
 WORKDIR /src
-RUN wget -c https://github.com/ctripcorp/apollo/archive/${version}.tar.gz -O ${package_name} \
+RUN wget -c https://github.com/ctripcorp/apollo/archive/v${version}.tar.gz -O ${package_name} \
     && tar zxf ${package_name} --strip-components=1 \
     && cp /scripts/build.sh scripts/ \
     && chmod 777 scripts/build.sh
